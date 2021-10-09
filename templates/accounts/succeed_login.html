@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Login{% endblock %}</title>
+    <link href="{% static "accounts/css/bootstrap.min.css" %}" rel="stylesheet">
+</head>
+<body>
+<h1>{% block heading %}Succeed login{% endblock %}</h1>
+<p class="lead" style="font-size: 30px">{% block content %}Waiting for redirect {% endblock %}<a href="{% url "accounts:login" %}">HERE</a></p>
+<div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+<script>window.setTimeout(function () {
+
+    // Move to a new location or you can do something else
+    window.location.href = "{% url "bookstore:index" %}";
+
+}, 3000);</script>
+</body>
+</html>
