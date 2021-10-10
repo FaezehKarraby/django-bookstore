@@ -27,10 +27,6 @@
                 {% endblock %}
             </ul>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <form class="d-flex" method="GET">
-                    <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search" style="width: 15rem">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                </form>
                 {% if user.is_authenticated %}
                     <div class="dropdown">
                         <button class="btn btn-success dropdown-toggle me-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,8 +44,11 @@
                     <a class="btn btn-primary" href="{% url "accounts:login" %}">Login</a>
                     <a class="btn btn-secondary" href="{% url "accounts:signup" %}">SignUp</a>
                 {% endif %}
+                <form class="d-flex" method="GET">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
             </div>
-
         </div>
     </div>
 </nav>
