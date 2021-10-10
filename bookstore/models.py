@@ -16,6 +16,7 @@ class Book(models.Model):
     )
     genre = models.IntegerField(choices=choice_gener)
     price = models.IntegerField(default=0)
+    count_book = models.IntegerField(default=0)
     image = models.ImageField(upload_to='books', default='book.jpeg')
 
     def __str__(self):
