@@ -109,16 +109,20 @@
                 </div>
             </div>
         </div>
-        <h5 style="margin: 5px 45%"><span class="badge bg-secondary">Page {{ books.number }} of {{ books.paginator.num_pages }}</span></h5>
-        <div class="btn-group btn-group-lg" style="margin: 0 45%" role="group">
-            {% if books.has_next and books.has_previous %}
-                <a type="button" href="?q={{ query }}&p={{ books.previous_page_number }}" class="btn btn-primary">≪</a>
-                <a type="button" href="?q={{ query }}&p={{ books.next_page_number }}" class="btn btn-primary">≫</a>
-            {% elif books.has_previous %}
-                <a type="button" href="?q={{ query }}&p={{ books.previous_page_number }}" class="btn btn-primary">≪</a>
-            {% elif books.has_next %}
-                <a type="button" href="?q={{ query }}&p={{ books.next_page_number }}" class="btn btn-primary">≫</a>
-            {% endif %}
+        <h5 align="center"><span class="badge bg-secondary">Page {{ books.number }} of {{ books.paginator.num_pages }}</span></h5>
+        <div align="center">
+            <div class="btn-group btn-group-lg" role="group">
+                {% if books.has_next and books.has_previous %}
+                    <a type="button" href="?q={{ query }}&p={{ books.previous_page_number }}"
+                       class="btn btn-primary">≪</a>
+                    <a type="button" href="?q={{ query }}&p={{ books.next_page_number }}" class="btn btn-primary">≫</a>
+                {% elif books.has_previous %}
+                    <a type="button" href="?q={{ query }}&p={{ books.previous_page_number }}"
+                       class="btn btn-primary">≪</a>
+                {% elif books.has_next %}
+                    <a type="button" href="?q={{ query }}&p={{ books.next_page_number }}" class="btn btn-primary">≫</a>
+                {% endif %}
+            </div>
         </div>
     {% elif query != None %}
         <div style="margin: 4rem auto;width: 35%">

@@ -9,7 +9,8 @@ def index(request):
         page = int(request.GET['p'])
     else:
         page = 1
-    if request.GET.get('q'):
+    context['query'] = request.GET.get('q')
+    if context['query']:
         book_list = models.Book.objects.filter(book__contains=request.GET['q'])
         if book_list.exists():
             paginator = Paginator(book_list, 9)
