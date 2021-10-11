@@ -52,43 +52,76 @@
         </div>
     </div>
 </nav>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ media }}bookstore1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ media }}bookstore2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ media }}bookstore3.jpg" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 {% block body %}
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+    {% if cn != None and cn > 0%}
+        <div style="margin: 4rem auto;width: 35%">
+            <p class="lead" style="font-size: 40px">
+                Results
+            </p>
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ media }}bookstore1.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ media }}bookstore2.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ media }}bookstore3.jpg" class="d-block w-100" alt="...">
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    {% for book in books %}
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" src ="{{ media }}{{ book.image }}" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+                                <div class="card-body">
+                                    <h3>{{ book.book }}</h3>
+                                    <h5><span class="badge bg-success">{{ book.get_genre_display }}</span></h5>
+                                    <p class="card-text lead">{{ book.description }}</p>
+                                    <h4 style="margin-left: 135px"><span class="badge bg-dark">$ {{ book.price }}</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    <div style="margin: 4rem auto;width: 35%">
-        <p class="lead" style="font-size: 40px">
-            {% block content %}Enter your codes for view books in this page{% endblock %}
-        </p>
-    </div>
+    {% elif cn == 0 %}
+        <div style="margin: 4rem auto;width: 35%">
+            <p class="lead" style="font-size: 40px">
+                No result
+            </p>
+        </div>
+    {% else %}
+        <div style="margin: 4rem auto;width: 35%">
+            <p class="lead" style="font-size: 40px">
+                Welcome
+            </p>
+        </div>
+    {% endif %}
 {% endblock %}
 <script src="{% static "bookstore/js/bootstrap.bundle.min.js" %}"></script>
 </body>
