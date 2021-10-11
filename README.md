@@ -36,8 +36,8 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 <p>
-After create a profile for superuser in Profiles<br/>
-Finally, <b>deploy the project on the Apache</b>
+Finally, <b>deploy the project on the Apache</b>><br/>
+then create a profile for superuser in Profiles
 </p>
 
 <p float="left">
