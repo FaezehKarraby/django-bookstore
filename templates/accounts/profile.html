@@ -4,13 +4,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link href="{% static "accounts/css/bootstrap.min.css" %}" rel="stylesheet">
 </head>
 <body>
-<div class="container" style="margin: 3rem auto;width: 40%;border-radius: 2rem">
+<div class="d-grid gap-2 d-md-flex justify-content-md-center">
     <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-        <div class="mb-3">
+        <div class="mb-3 container-lg">
             <img src="{{ media }}{{ user.profile.image }}" alt="profile" style="border-radius: 50%;border: 0.01px solid;width: 10rem;height: 10rem;margin: 10px"/>
             <input type="file" class="form-control" name="image" style="font-size: 1rem;font-weight: 300">
             {% if form.image.errors %}
@@ -19,7 +20,7 @@
                 </div>
             {% endif %}
         </div>
-        <div class="mb-3">
+        <div class="mb-3 container-lg">
             <label class="form-label" style="font-size: 1rem;font-weight: 300">Firstname</label>
             <input type="text" class="form-control" name="first_name" maxlength="20" value="{{ user.first_name }}" style="margin: 0 auto;font-size: 1rem;font-weight: 300">
             {% if form.first_name.errors %}
