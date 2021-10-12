@@ -1,0 +1,54 @@
+{% extends "bookstore/index.html" %}
+{% block title %}Genre{% endblock %}
+{% block body %}
+    {% if books %}
+        <div style="margin: 4rem auto;width: 35%">
+            <p class="lead" style="font-size: 40px">
+                Results
+            </p>
+        </div>
+        <div class="album py-5 bg-light">
+            <div class="container-lg">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+                    {% for book in books %}
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" width="100%" height="225" role="img"
+                                     src="{{ media }}{{ book.image }}" preserveAspectRatio="xMidYMid slice"
+                                     focusable="false"/>
+                                <div class="card-body">
+                                    <h3>{{ book.book }}</h3>
+                                    <h5><span class="badge bg-success">{{ book.get_genre_display }}</span></h5>
+                                    <p class="card-text lead">{{ book.description }}</p>
+                                    <h4 align="center"><span class="badge bg-dark">$ {{ book.price }}</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <h5 align="center"><span
+                class="badge bg-secondary">Page {{ books.number }} of {{ books.paginator.num_pages }}</span></h5>
+        <div align="center">
+            <div class="btn-group btn-group-lg" role="group">
+                {% if books.has_next and books.has_previous %}
+                    <a type="button" href="?p={{ books.previous_page_number }}"
+                       class="btn btn-primary">≪</a>
+                    <a type="button" href="?p={{ books.next_page_number }}" class="btn btn-primary">≫</a>
+                {% elif books.has_previous %}
+                    <a type="button" href="?p={{ books.previous_page_number }}"
+                       class="btn btn-primary">≪</a>
+                {% elif books.has_next %}
+                    <a type="button" href="?p={{ books.next_page_number }}" class="btn btn-primary">≫</a>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <div style="margin: 4rem auto;width: 35%">
+            <p class="lead" style="font-size: 40px">
+                No result
+            </p>
+        </div>
+    {% endif %}
+{% endblock %}

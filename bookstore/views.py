@@ -4,7 +4,7 @@ from . import models
 
 
 def index(request):
-    context = {'user': request.user,'genres':models.Book.choice_genre}
+    context = {'genres':models.Book.choice_genre}
     if request.GET.get('p'):
         page = request.GET['p']
     else:
