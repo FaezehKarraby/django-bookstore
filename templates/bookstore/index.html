@@ -91,7 +91,7 @@
             </p>
         </div>
         <div class="album py-5 bg-light">
-            <div class="container">
+            <div class="container-lg">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     {% for book in books %}
                         <div class="col">
@@ -101,7 +101,7 @@
                                     <h3>{{ book.book }}</h3>
                                     <h5><span class="badge bg-success">{{ book.get_genre_display }}</span></h5>
                                     <p class="card-text lead">{{ book.description }}</p>
-                                    <h4 style="margin-left: 135px"><span class="badge bg-dark">$ {{ book.price }}</span></h4>
+                                    <h4 align="center"><span class="badge bg-dark">$ {{ book.price }}</span></h4>
                                 </div>
                             </div>
                         </div>
