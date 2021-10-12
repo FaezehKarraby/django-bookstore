@@ -6,7 +6,7 @@ class Book(models.Model):
     book = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
     LOVER, FANTASTY, SCIENCE_FICTION, ADVENTURE, PANIC, HISTORICAL = 1, 2, 3, 4, 5, 6
-    choice_gener = (
+    choice_genre = (
         (LOVER, 'Lover'),
         (FANTASTY, 'Fantasy'),
         (SCIENCE_FICTION, 'Science Fiction'),
@@ -14,7 +14,7 @@ class Book(models.Model):
         (PANIC, 'Panic'),
         (HISTORICAL, 'Historical')
     )
-    genre = models.IntegerField(choices=choice_gener)
+    genre = models.IntegerField(choices=choice_genre)
     price = models.IntegerField(default=0)
     count_book = models.IntegerField(default=0)
     image = models.ImageField(upload_to='books', default='book.jpeg')

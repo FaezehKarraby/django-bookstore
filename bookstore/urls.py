@@ -5,4 +5,5 @@ app_name = 'bookstore'
 urlpatterns = [
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
+    path('genre/<int:gn>/', views.genre, name='genre'),
 ]

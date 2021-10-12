@@ -18,36 +18,44 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                {% block navitem %}
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url "bookstore:index" %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url "bookstore:about" %}">About</a>
-                    </li>
-                {% endblock %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url "bookstore:index" %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url "bookstore:about" %}">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Geners
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {%  for val,item in genres%}
+                            <li><a class="dropdown-item" href="{% url "bookstore:genre" gn=val %}">{{ item }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
             </ul>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <form class="d-flex" method="GET">
-                    <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control me-2 form-control-sm" type="search" name="q" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-sm btn-outline-success" type="submit">Search</button>
                 </form>
                 {% if user.is_authenticated %}
                     <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle me-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-sm btn-success dropdown-toggle me-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ user.first_name }}
                         </button>
+                        <img src="{{ media }}{{ user.profile.image }}" alt="profile" style="border-radius: 50%;width: 2.5rem;height: 2.5rem"/>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="{% url "accounts:profile" %}">Profile</a></li>
-                            <li><a class="dropdown-item disabled" href="#">credit : {{ user.profile.credit }}</a></li>
+                            <li><a class="dropdown-item disabled" href="#">credit : ${{ user.profile.credit }}</a></li>
                             <li><a class="dropdown-item" href="{% url "accounts:logout" %}">Logout</a></li>
                         </ul>
                     </div>
-                    <img class="me-3" src="{{ media }}{{ user.profile.image }}" alt="profile"
-                         style="border-radius: 50%;width: 2.5rem;height: 2.5rem"/>
                 {% else %}
-                    <a class="btn btn-primary" href="{% url "accounts:login" %}">Login</a>
-                    <a class="btn btn-primary" href="{% url "accounts:signup" %}">SignUp</a>
+                    <a class="btn btn-sm btn-primary" href="{% url "accounts:login" %}">Login</a>
+                    <a class="btn btn-sm btn-primary" href="{% url "accounts:signup" %}">SignUp</a>
                 {% endif %}
             </div>
         </div>
