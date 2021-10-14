@@ -41,12 +41,12 @@ then create a profile for superuser in Profiles
 </p>
 
 <p float="left">
-  <img src="images/1.jpg" width="300" height="200" style="border: 1px solid" />
-  <img src="images/2.jpg" width="300" height="200" style="border: 1px solid" /> 
-  <img src="images/3.jpg" width="300" height="200" style="border: 1px solid" />
-  <img src="images/4.jpg" width="300" height="200" style="border: 1px solid" />
-  <img src="images/5.jpg" width="300" height="200" style="border: 1px solid" />
-  <img src="images/6.jpg" width="300" height="200" style="border: 1px solid" />
+  <img src="images/1.jpg" width="300"  style="border: 1px solid" />
+  <img src="images/2.jpg" width="300"  style="border: 1px solid" /> 
+  <img src="images/3.jpg" width="300"  style="border: 1px solid" />
+  <img src="images/4.jpg" width="300"  style="border: 1px solid" />
+  <img src="images/5.jpg" width="300"  style="border: 1px solid" />
+  <img src="images/6.jpg" width="300" height="150" style="border: 1px solid" />
 </p>
 
 
