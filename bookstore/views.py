@@ -48,7 +48,7 @@ def index_api(request):
 
 
 def about(request):
-    return render(request, 'bookstore/about.html')
+    return render(request, 'bookstore/about.html',context={'genres': models.Book.choice_genre})
 
 
 def genre(request, gn):
