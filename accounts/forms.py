@@ -46,11 +46,10 @@ class Change_password(forms.Form):
         super().__init__(*args, **kwargs)
 
     def clean_old_password(self):
-        if not self._user.check_password(self.cleaned_data['old_password']):
+        if not self._user.check_password(self.cleaned_data.get('old_password')):
             raise ValidationError('Old password is wrong')
         return self.cleaned_data['old_password']
 
     def clean_repeat_password(self):
-        if self.cleaned_data['repeat_password'] != self.cleaned_data['new_password']:
+        if self.cleaned_data.get('repeat_password') != self.cleaned_data.get('new_password'):
             raise ValidationError('Repeat password is wrong')
-        return self.cleaned_data['repeat_password']
